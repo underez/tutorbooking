@@ -1,0 +1,66 @@
+form {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="file"] {
+    width: 100%; 
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+  }
+  
+  button[type="submit"] {
+    background-color: #FF7E84;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #FF7E84;
+  }
+  
+  /* Form group style */
+  .form-group {
+    margin-bottom: 15px;
+    width: 100%;
+
+  }
+
+  /* Form row style */
+  .form-row {
+    display: flex;
+    width: 100%;
+  }
+  
+  /* Form group inside form row style */
+  .form-row .form-group {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  /* Form group inside form row style for small screens */
+  @media (max-width: 768px) {
+    .form-row .form-group {
+      flex-basis: 100%;
+      margin-right: 0;
+    }
+  }
+  

@@ -1,0 +1,9 @@
+.social-explore:hover > ul {
+  display: flex;
+}
+.social-explore > ul {
+  display: none;
+}
+.social-explore:hover > button {
+  display: none;
+}
