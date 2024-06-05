@@ -7,7 +7,7 @@ import ct5 from "../assets/images/icon/ct5.svg";
 import ct6 from "../assets/images/icon/ct6.svg";
 import { courseData } from "../constant/dummyData";
 
-const getCategoryIcon = (index) => {
+const getCategoryIcon = (index) => {เระ
   const icons = [ct1, ct2, ct3, ct4, ct5, ct6];
   return icons[index % icons.length];
 };

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Disclosure, Tab } from "@headlessui/react";
-import React, { Fragment,useState } from "react";
+import React, { Fragment, useState , useEffect} from "react";
 import janepotter from "../assets/images/all-img/janepotter.png";
 import { Calendar, momentLocalizer,TimeGrid } from 'react-big-calendar';
 import moment from 'moment';
@@ -38,7 +38,7 @@ import {
 } from "../constant/images";
 const localizer = momentLocalizer(moment);
 
-const TutorDetail = () => {
+const TutorDetail = ({tutor}) => {
 
 
 
@@ -46,6 +46,7 @@ const TutorDetail = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [scheduleData, setScheduleData] = useState(dummyScheduleData);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [teacher, setTeacher] = useState(null);
 
   // const events = [
   //   {
@@ -133,7 +134,7 @@ const TutorDetail = () => {
         
               <div className=" mb-6">
                 <span className="bg-secondary py-1 px-3 text-lg font-semibold rounded text-white ">
-                 English
+                {tutor.subject}
                 </span>
               </div>
         
@@ -147,7 +148,7 @@ const TutorDetail = () => {
                     <span className=" text-secondary  ">
                       Tutor
                       <a href="#" className=" text-black">
-                        : Miss Jane Potter
+                        : : {tutor.firstname} {tutor.lastname}
                       </a>
                     </span>
                   </div>
@@ -177,12 +178,7 @@ const TutorDetail = () => {
                         <h3 className=" text-2xl">Bio</h3>
                         <p className="mt-4">
                          แนะนำตัวเอง
-                          <br /> <br /> ประสบการณ์สอน
-                          มีประสบการณ์การสอนภาษาอังกฤษมากกว่า 8 ปี ทั้งการสอนในห้องเรียนและการสอนส่วนตัว
-คุณวุฒิการศึกษา:
-
-ปริญญาตรี ภาษาอังกฤษ จากมหาวิทยาลัยแคลิฟอร์เนีย ลอสแองเจลิส
-ประกาศนียบัตรผู้สอนภาษาอังกฤษเป็นภาษาต่างประเทศ (TEFL)
+                          <br /> <br /> {tutor.Bio}
                         </p>
                        
                         <div>
@@ -220,12 +216,8 @@ const TutorDetail = () => {
                       <div>
                         <h3 className=" text-2xl">Subjects</h3>
                         <div className="md:flex md:space-x-10  space-x-3 flex-wrap mt-4 mb-6">
-                          <span>English for Beginner </span>
-                          <span>Conversation</span>
-                          <span>Phonics</span>
-                          <span>TOEIC</span>
-                          <span>IELTS</span>
-                          <span>TOEFL</span>
+                          <span>{tutor.subject} </span>
+                         
                         </div>
                      
                       </div>
@@ -327,10 +319,10 @@ const TutorDetail = () => {
                     className=" block w-full h-full object-cover rounded "
                   />
                   <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <img src={janepotter} alt="janepotter"/>
+                    <img src={process.env.PUBLIC_URL + `/images/`+tutor.img}/>
                   </div>
                 </a>
-                <h3>500/hr</h3>
+                <h3>{tutor.rate} / hr</h3>
                
                 <button className="btn btn-primary w-full text-center" onClick={() => setSelectedIndex(2)}>
                   Book Now
@@ -345,7 +337,7 @@ const TutorDetail = () => {
                         Instructor
                       </div>
                     </div>
-                    <div className="flex-none">Jane Potter</div>
+                    <div className="flex-none">{tutor.firstname} {tutor.lastname}</div>
                   </li>
 
         
@@ -364,7 +356,7 @@ const TutorDetail = () => {
                       <img src={web} alt="" />
                       <div className=" text-black font-semibold">Language</div>
                     </div>
-                    <div className="flex-none">English</div>
+                    <div className="flex-none">English / Thai</div>
                   </li>
                 </ul>
                
