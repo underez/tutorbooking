@@ -2,11 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo/prepmeelogo.png";
 import MobileMenu from "./MobileMenu";
+import CryptoJS from 'crypto-js';
 
-const Header = () => {
+const Header = ({balance}) => {
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(null); // เพิ่ม state สำหรับเก็บ token
+  
+ 
 
   const scrollNav = useRef(null);
 
@@ -20,6 +23,9 @@ const Header = () => {
       setIsLoggedIn(false);
       setToken(null);
     }
+  
+ 
+  
 
     // Scrolling nav
     const handleScroll = () => {
@@ -86,7 +92,7 @@ const Header = () => {
                      {isLoggedIn && (
                       <li>
                         <Link to={"/StudentPage"}>
-                          Balance : 0.00 ฿
+                          Balance : {balance} ฿
                         </Link>
                       </li>
                     )}

@@ -111,7 +111,7 @@ const login = async (req, res) => {
     const token = jwt.sign(payload, 'secret_token', { expiresIn: '1h' });
 
     // ส่งข้อมูลผู้ใช้กลับไปพร้อมกับ token
-    res.json({ token, user: { id: member.member_id, username: member.username, name: member.name, surname: member.surname } });
+    res.json({ token, user: { id: member.member_id, username: member.username, name: member.name, surname: member.surname , email: member.email , balance : member.balance } });
   } catch (err) {
     console.error('Error logging in', err);
     res.status(500).json({ error: 'Internal server error' });

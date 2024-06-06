@@ -13,12 +13,14 @@ const Register = () => {
         username: '',
         password: '',
         name: '',
-        surname: ''
+        surname: '',
+        email:'',
+        balance:450
     });
 
     const [usernameExists, setUsernameExists] = useState(false);
 
-    const { username, password, name, surname } = formData;
+    const { username, password, name, surname,email,balance } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -55,7 +57,9 @@ const Register = () => {
                 username,
                 password: hashedPassword,
                 name: encryptedName,
-                surname: encryptedSurname
+                surname: encryptedSurname,
+                email,
+                balance
             });
 
             const res = await axios.post('http://localhost:4090/api/members', body, config);
@@ -116,6 +120,18 @@ const Register = () => {
                     <input
                     style={{ width: '500px', height:'auto' }}
                     type="text" name="surname" value={surname} onChange={onChange} required />
+                </div>
+                <div>
+                    <label>email</label>
+                    <input
+                    style={{ width: '500px', height:'auto' }}
+                    type="email" name="email" value={email} onChange={onChange} required />
+                </div>
+                <div>
+                   
+                    <input
+                    style={{ width: '500px', height:'auto' }}
+                    type="hidden" name="balance" value={balance} onChange={onChange} required />
                 </div>
                 <button type="submit">Register</button>
             </form>

@@ -17,6 +17,7 @@ const StudentPage = () => {
   const [user, setUser] = useState(null);
   const [bio, setBio] = useState('');
   const [avatar, setAvatar] = useState('');
+  const [balance, setBalance] = useState('');
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -28,6 +29,7 @@ const StudentPage = () => {
         setUser({ ...parsedUser, name: decryptedName, surname: decryptedSurname });
         setBio(parsedUser.bio || '');
         setAvatar(parsedUser.avatar || '');
+        setBalance(parsedUser.balance || ''); // Set balance
       } catch (error) {
         console.error("Error parsing user data from localStorage:", error);
         localStorage.removeItem('user');
@@ -105,7 +107,7 @@ const StudentPage = () => {
 
   return (
     <div>
-      <Header />
+     <Header balance={balance} />
       <div className="section-padding bg-[url('../images/all-img/insbg.png')] bg-contain bg-no-repeat">
         <div className="container">
           <div className="grid grid-cols-12 xl:gap-0 gap-[30px]">
@@ -115,6 +117,7 @@ const StudentPage = () => {
                   <h5 className="text-2xl font-bold text-black mb-4">
                     {user.name} {user.surname}
                   </h5>
+                  <h6>{user.email}</h6>
                   <div className="mb-8">
                     <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
                       <div className="relative w-24 h-24">

@@ -41,6 +41,14 @@ const Member = sequelize.define('member', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  balance: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+  },
 });
 
 module.exports = Member;
