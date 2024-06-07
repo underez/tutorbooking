@@ -9,6 +9,7 @@ import axios from "axios";
 const Profile = () => {
   const { id } = useParams();
   const [tutor , setTutor] = useState(null);
+  const [balance, setBalance] = useState("");
 
   useEffect(() => {
     
@@ -19,7 +20,7 @@ const Profile = () => {
 
   return (
     <>
-      <Header />
+      <Header balance={balance} />
       <PageBanner title={"Tutor Profile"} pageName={"Tutor Profile"} />
       {tutor && <TutorDetail tutor={tutor} /> }
       

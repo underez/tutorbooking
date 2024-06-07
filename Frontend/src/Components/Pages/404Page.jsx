@@ -6,9 +6,11 @@ import Footer from "../Footer";
 import Header from "../Header";
 
 const ErrorPage = () => {
+ 
+  
   return (
     <>
-      <Header />
+      <Header  />
       <div className=" min-h-screen bg-[url('../images/all-img/404-bg.png')] bg-cover bg-no-repeat bg-center">
         <div className="max-w-[570px] mx-auto flex flex-col items-center text-center justify-center min-h-screen px-4">
           <img src={error404} alt="" className="mb-14" />

@@ -18,6 +18,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="font-gilroy font-medium text-gray text-lg leading-[27px]">
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/FindTutors" element={<FindTutors />}  />
