@@ -39,9 +39,13 @@ import {
   cmnt2,
 } from "../constant/images";
 import axios from "axios";
+// Add this import for sending confirmation email
+import { sendConfirmationEmail } from "../utils/api";
+
+
 const localizer = momentLocalizer(moment);
 
-const TutorDetail = ({ tutor }) => {
+const TutorDetail = ({ tutor , email }) => {
   const [visible, setVisible] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [scheduleData, setScheduleData] = useState([]);
@@ -101,6 +105,9 @@ const handleBookEvent = async () => {
 
    // Refresh timetable data after booking
    await fetchTimetable();
+   // Send confirmation email
+   await sendConfirmationEmail(email);
+   console.log(email)
      
   } catch (error) {
     console.error('Error booking event', error);
@@ -148,7 +155,9 @@ const handleBookEvent = async () => {
               <div className=" mb-6">
                 <span className="bg-secondary py-1 px-3 text-lg font-semibold rounded text-white ">
                   {tutor.subject}
+                  
                 </span>
+                {email}
               </div>
 
               <div
